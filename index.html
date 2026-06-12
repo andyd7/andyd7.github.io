@@ -1,1 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andy Dorado Romero</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #14141f;
+      --panel: #1d1d2e;
+      --panel-border: #2c2c42;
+      --ink: #ece9f4;
+      --muted: #9b96b0;
+      --violet: #a78bfa;
+      --violet-deep: #8b5cf6;
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'IBM Plex Sans', sans-serif;
+      line-height: 1.65;
+    }
+
+    h1, h2, h3, .display-font {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .violet {
+      color: var(--violet);
+      font-weight: 500;
+    }
+
+    a {
+      color: var(--violet);
+      text-decoration: none;
+    }
+
+    a:hover, a:focus-visible {
+      color: var(--ink);
+      text-decoration: underline;
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--violet);
+      outline-offset: 3px;
+    }
+
+    .navbar-custom {
+      background-color: rgba(20, 20, 31, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--panel-border);
+    }
+
+    .navbar-custom .nav-link {
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+    }
+
+    .navbar-custom .nav-link:hover {
+      color: var(--violet);
+      text-decoration: none;
+    }
+
+    .navbar-custom .navbar-brand {
+      color: var(--ink);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+    }
+
+    .hero {
+      padding: 6rem 0 4rem;
+      border-bottom: 1px solid var(--panel-border);
+    }
+
+    .comment-tag {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--muted);
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero .role {
+      color: var(--violet);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p.bio {
+      max-width: 42rem;
+      font-size: 1.1rem;
+      color: var(--ink);
+    }
+
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--panel-border);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-heading {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtext {
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      max-width: 40rem;
+    }
+
+    .unit-card {
+      background-color: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      height: 100%;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .unit-card:hover {
+      border-color: var(--violet-deep);
+      transform: translateY(-3px);
+    }
+
+    .unit-card .unit-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--violet);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .unit-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .unit-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    .project-card {
+      background-color: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 0.5rem;
+      padding: 2rem;
+    }
+
+    .project-card h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card .repo-path {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      word-break: break-all;
+    }
+
+    .btn-violet {
+      background-color: var(--violet-deep);
+      color: #14141f;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 0.375rem;
+    }
+
+    .btn-violet:hover {
+      background-color: var(--violet);
+      color: #14141f;
+    }
+
+    footer {
+      padding: 2.5rem 0;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--muted);
+    }
+
+    footer a:hover {
+      color: var(--violet);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .unit-card { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand navbar-custom sticky-top py-3">
+    <div class="container">
+      <a class="navbar-brand" href="#">Andy Dorado Romero</a>
+      <div class="d-flex gap-4">
+        <a class="nav-link" href="#about">about</a>
+        <a class="nav-link" href="#units">units</a>
+        <a class="nav-link" href="#projects">projects</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <p class="comment-tag mb-2">// hello world</p>
+      <h1>Andy Dorado Romero</h1>
+      <p class="role">AP Computer Science A &mdash; Class of 2026</p>
+      <p class="bio">
+        Hello! My name is Andy and I am a student at
+        <span class="violet">Franklin Delano Roosevelt High School</span>
+        who will be going to <span class="violet">NYU</span> in the fall of 2026.
+        This is my website, so feel free to explore!
+      </p>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <p class="comment-tag mb-2">// about</p>
+      <h2 class="section-heading">What this site is</h2>
+      <p class="section-subtext">
+        A growing portfolio of what I'm building and learning in AP Computer Science A.
+        Expect this page to change a lot over the year as I add projects, fix bugs,
+        and (eventually) my resume and contact info.
+      </p>
+    </div>
+  </section>
+
+  <section id="units">
+    <div class="container">
+      <p class="comment-tag mb-2">// units covered so far</p>
+      <h2 class="section-heading">A few things I've learned in AP CSA</h2>
+      <p class="section-subtext">
+        Some of the core ideas from this year's units that I've used in my projects
+        and FRQ practice.
+      </p>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="unit-card">
+            <span class="unit-tag">Unit 2 &mdash; Using Objects</span>
+            <h3>Classes &amp; Objects</h3>
+            <p>
+              Learned how to design classes with constructors, instance variables,
+              and methods to model real things in code, and how to call methods
+              on objects to make them do work.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="unit-card">
+            <span class="unit-tag">Unit 4 &mdash; Iteration</span>
+            <h3>Loops &amp; Iteration</h3>
+            <p>
+              Practiced writing <code>while</code> and <code>for</code> loops,
+              including nested loops, to repeat tasks and process data without
+              writing the same code over and over.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="unit-card">
+            <span class="unit-tag">Unit 6 &mdash; Array</span>
+            <h3>Arrays &amp; ArrayLists</h3>
+            <p>
+              Worked with arrays and <code>ArrayList</code> to store collections
+              of data, then traversed, searched, and updated them with loops.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="unit-card">
+            <span class="unit-tag">Unit 9 &mdash; Inheritance</span>
+            <h3>Inheritance &amp; Polymorphism</h3>
+            <p>
+              Explored how subclasses extend a parent class, override methods,
+              and how polymorphism lets different objects respond to the same
+              method call in their own way.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <p class="comment-tag mb-2">// projects</p>
+      <h2 class="section-heading">Projects</h2>
+      <p class="section-subtext">
+        My AP CSA FRQ practice repo, where I work through free-response questions
+        from past exams.
+      </p>
+      <div class="row g-4">
+        <div class="col-md-8">
+          <div class="project-card">
+            <h3>ap-csa-2026-frqs</h3>
+            <p class="repo-path">github.com/andyd7/ap-csa-2026-frqs</p>
+            <p>
+              A collection of AP Computer Science A free-response question
+              solutions, written and refined throughout the 2025&ndash;2026
+              school year.
+            </p>
+            <a class="btn btn-violet" href="https://github.com/andyd7/ap-csa-2026-frqs" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p class="mb-0">Built by Andy Dorado Romero &mdash; <a href="https://github.com/andyd7" target="_blank" rel="noopener">github.com/andyd7</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
